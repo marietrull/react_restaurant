@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Menuitems from './Menuitems'
+import Menuitems from './Menuitems';
+import CreateMenuitem from './CreateMenuitem';
 
 class App extends Component {
 	constructor (){
@@ -35,6 +36,7 @@ class App extends Component {
 		    Welcome to the React Restaurant App!
 
 		    <Menuitems menuitems={this.state.menuitems}/>
+		    <CreateMenuitem/>
 
 		  </div>
 		);
