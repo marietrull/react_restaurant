@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-// import Menuitems from './Menuitems'
+import Menuitems from './Menuitems'
 
 class App extends Component {
 	constructor (){
 	    super();
 
 	    this.state = {
-	      items: []
+	      menuitems: []
 	    }
 	}
 
@@ -16,7 +16,8 @@ class App extends Component {
 	    this.getMenuitems()
 	    .then((response) => {
 	      console.log(response)
-	      this.setState({items: response.item})
+	      this.setState({menuitems: response})
+	      console.log(this.state, "this is state")
 	    })
 	    .catch ((err) => {
 	      console.log(err)
@@ -24,15 +25,17 @@ class App extends Component {
   	}
 
   	getMenuitems = async () => {
-	    const MenuitemsJson = await fetch('http://localhost:9292/menuitems')
-	    const Menuitems = await MenuitemsJson.json();
-	    console.log(Menuitems + "this is Menuitems")
-	    return Menuitems;
+	    const menuitemsJson = await fetch('http://localhost:9292/menuitems')
+	    const menuitems = await menuitemsJson.json();
+	    return menuitems;
   	}
 	render() {
 		return (
 		  <div className="App">
 		    Welcome to the React Restaurant App!
+
+		    <Menuitems menuitems={this.state.menuitems}/>
+
 		  </div>
 		);
 	}

@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
 
-const Menuitems = ({Menuitems}) => {
-	const MenuitemsList = Menuitems.map((item, i) => {
-		console.log(MenuitemList, "this is MenuitemsList")
+const Menuitems = ({menuitems}) => {
+
+	menuitems = menuitems
+	console.log (menuitems, "This is menuitems")
+
+	const menuitemsList = menuitems.map((menuitem, i) => {
 		return (
-			<li key={item.id}>{item.title}
+			<li key={menuitem.id}>{menuitem.name}
 			</li>
 		)
 	})
 
-	// console.log(items, "this is props in item list")
-
 	return(
-
 		<ul>
-		{MenuitemsList}
+		{menuitemsList}
 		</ul>
 	)
 }
 
-export default Menuitems; 
+export default Menuitems;
+
+
+
+
+
+
+
