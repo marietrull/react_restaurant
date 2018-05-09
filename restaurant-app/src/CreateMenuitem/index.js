@@ -18,6 +18,8 @@ class CreateMenuitem extends Component {
 		e.preventDefault();
 		console.log("were abouttotry toadd, ", this.state.name)
 		this.props.addItem(this.state.name);
+		this.setState({name: ''})
+
 	}
 
 	render () {

@@ -7,6 +7,7 @@ const Menuitems = ({menuitems}) => {
 	const menuitemsList = menuitems.map((menuitem, i) => {
 		return (
 			<li key={menuitem.id}>{menuitem.name}
+				<button id={menuitem.id}>DELETE</button>
 			</li>
 		)
 	})
