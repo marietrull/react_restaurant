@@ -4,31 +4,30 @@ class CreateMenuitem extends Component {
 
 	constructor (){
 		super();
-		// specific purpose here --> store the information that our users enter into the input
 		this.state = {
-			title: ''
+			name: ''
 		}
 	}
-	// //if you only have on param, you don't have to include parenthesis 
-	// updateItem = e => {
-	// 	//assigning user input to the title
-	// 	const title = e.currentTarget.value;
-	// 	this.setState({title: title})
-	// }
-	// handleSubmit = e => {
-	// 	e.preventDefault();
-	// 	//this.state.title --> this is a string, NOT an object
-	// 	//this.state --> this is the object
-	// 	this.props.addItem(this.state.title);
-	// }
+
+	updateItem = e => {
+		const name = e.currentTarget.value;
+		this.setState({name: name})
+	}
+
+	handleSubmit = e => {
+		e.preventDefault();
+		console.log("were abouttotry toadd, ", this.state.name)
+		this.props.addItem(this.state.name);
+	}
 
 	render () {
+
 		return (
 
-			<form>
+			<form onSubmit={this.handleSubmit}>
 
 				<label htmlFor='item'/>
-				<input type='text' value='New Menu Item'/>
+				<input type='text' onChange={this.updateItem}/>
 				<input type='submit'/>
 
 			</form>

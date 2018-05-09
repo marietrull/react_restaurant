@@ -26,17 +26,32 @@ class App extends Component {
   	}
 
   	getMenuitems = async () => {
-	    const menuitemsJson = await fetch('http://localhost:9292/menuitems')
-	    const menuitems = await menuitemsJson.json();
-	    return menuitems;
+	    const menuitems = await fetch('http://localhost:9292/menuitems')
+	    const menuitemsJson = await menuitems.json();
+	    return menuitemsJson;
   	}
+  	addItem = async (name) => {
+  
+    	const menuitems = await fetch('http://localhost:9292/menuitems', {
+			method: 'POST',
+			body: JSON.stringify({name: name})
+    	})
+
+    	
+	    const menuitemParsed = await menuitems.json();
+	    console.log(menuitemParsed, "menuitemsParsed")
+
+	    this.setState({menuitems: [...this.state.menuitems, menuitemParsed]})
+
+	    return menuitemParsed;
+  }
 	render() {
 		return (
 		  <div className="App">
 		    Welcome to the React Restaurant App!
 
-		    <Menuitems menuitems={this.state.menuitems}/>
-		    <CreateMenuitem/>
+		    <Menuitems menuitems={this.state.menuitems} />
+		    <CreateMenuitem addItem={this.addItem}/>
 
 		  </div>
 		);
