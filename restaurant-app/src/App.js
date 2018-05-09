@@ -44,13 +44,38 @@ class App extends Component {
 	    this.setState({menuitems: [...this.state.menuitems, menuitemParsed]})
 
 	    return menuitemParsed;
-  }
+  	}
+    
+    deleteItem = async (e) => {
+	    console.log('Delete Button Clicked')
+
+	    const id = e.currentTarget.id;
+
+	    console.log(id, ' this is the id in deleteItem')
+
+	    //delete request to the Sinatra app
+	    const menuitem = await fetch('http://localhost:9292/menuitems/' + id, {
+	      method: 'DELETE'
+	    });
+
+	    console.log(menuitem, "menuitem deleteItem")
+
+	    const response = await menuitem.json();
+	    console.log(response, 'this is response in deleteItem')
+
+	    if (response.success){
+	      this.setState({menuitems: this.state.menuitems.filter((menuitem) => menuitem.id != id)});
+	    } else {
+	    	console.log("YA DONE FUCKED UP")
+	    }
+    
+  	}
 	render() {
 		return (
 		  <div className="App">
 		    Welcome to the React Restaurant App!
 
-		    <Menuitems menuitems={this.state.menuitems} />
+		    <Menuitems menuitems={this.state.menuitems} deleteItem={this.deleteItem}/>
 		    <CreateMenuitem addItem={this.addItem}/>
 
 		  </div>
