@@ -78,14 +78,21 @@ class App extends Component {
   	}
 
   	showOrders = (e) => {
-		console.log('Edit Clicked')
-
 		const id = e.currentTarget.id
-		console.log(id)
 
 		this.setState({
 			showOrders: true
 		})
+	}
+
+	closeOrders = (e) => {
+		console.log('Close Clicked')
+
+		this.setState({
+			showOrders: false
+		})
+
+		
 	}
 	render() {
 
@@ -96,7 +103,7 @@ class App extends Component {
 
 		    <Menuitems menuitems={this.state.menuitems} deleteItem={this.deleteItem} showOrders={this.showOrders}/>
 		    <CreateMenuitem addItem={this.addItem}/>
-		    <Modal showOrders={this.state.showOrders}/>
+		    <Modal showOrders={this.state.showOrders} closeOrders={this.closeOrders}/>
 
 		  </div>
 		);

@@ -11,7 +11,7 @@ class Modal extends Component {
 		}
 	}
 
-	render () {
+	render (closeOrders) {
 
 	console.log(this.props,  "This is props Modal")
 
@@ -20,7 +20,7 @@ class Modal extends Component {
 	return (
 
 		<div class={cssClass}>
-			<button> CLOSE </button>
+			<button onClick={this.props.closeOrders}> CLOSE </button>
 		</div>
 
 		)
