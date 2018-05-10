@@ -44,6 +44,10 @@ class CreateMenuitem extends Component {
 
 			<form onSubmit={this.handleSubmit}>
 
+				ADD ITEM
+				<br/>
+				<br/>
+
 				<label htmlFor='item'/>
 				<input id="name" type='text' placeholder='Menu Item Name' onChange={this.updateName}/>
 				<input id="description" type='text' placeholder='Description' onChange={this.updateDescription}/>

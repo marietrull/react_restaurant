@@ -9,7 +9,8 @@ class App extends Component {
 	    super();
 
 	    this.state = {
-	      menuitems: []
+	      menuitems: [],
+	      showOrders: false,
 	    }
 	}
 
@@ -74,12 +75,24 @@ class App extends Component {
 	    }
     
   	}
+
+  	showOrders = (e) => {
+		console.log('Edit Clicked')
+
+		// set id equal to current target id
+		const id = e.currentTarget.id
+		console.log(id)
+
+		// this.setState({
+		// 	showOrders: true
+		// })
+	}
 	render() {
 		return (
 		  <div className="App">
 		    Welcome to the React Restaurant App!
 
-		    <Menuitems menuitems={this.state.menuitems} deleteItem={this.deleteItem}/>
+		    <Menuitems menuitems={this.state.menuitems} deleteItem={this.deleteItem} showOrders={this.showOrders}/>
 		    <CreateMenuitem addItem={this.addItem}/>
 
 		  </div>
