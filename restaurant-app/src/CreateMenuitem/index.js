@@ -5,20 +5,36 @@ class CreateMenuitem extends Component {
 	constructor (){
 		super();
 		this.state = {
-			name: ''
+			name: '',
+			description: ''
 		}
 	}
 
-	updateItem = e => {
+	updateName = e => {
 		const name = e.currentTarget.value;
 		this.setState({name: name})
 	}
 
+	updateDescription = e => {
+		const description = e.currentTarget.value;
+		this.setState({description: description})
+	}
+
+	updatePrice = e => {
+		const price = e.currentTarget.value;
+		this.setState({price: price})
+	}
+
+
+
 	handleSubmit = e => {
 		e.preventDefault();
-		console.log("were abouttotry toadd, ", this.state.name)
-		this.props.addItem(this.state.name);
-		this.setState({name: ''})
+		this.props.addItem(this.state.name, this.state.description, this.state.price);
+		this.setState({
+			name: '',
+			description: '',
+			price: ''
+		})
 
 	}
 
@@ -29,7 +45,9 @@ class CreateMenuitem extends Component {
 			<form onSubmit={this.handleSubmit}>
 
 				<label htmlFor='item'/>
-				<input type='text' onChange={this.updateItem}/>
+				<input id="name" type='text' placeholder='Menu Item Name' onChange={this.updateName}/>
+				<input id="description" type='text' placeholder='Description' onChange={this.updateDescription}/>
+				<input id="price" type='text' placeholder='Price' onChange={this.updatePrice}/>
 				<input type='submit'/>
 
 			</form>

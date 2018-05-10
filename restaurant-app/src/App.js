@@ -30,11 +30,15 @@ class App extends Component {
 	    const menuitemsJson = await menuitems.json();
 	    return menuitemsJson;
   	}
-  	addItem = async (name) => {
+  	addItem = async (name, description, price) => {
   
     	const menuitems = await fetch('http://localhost:9292/menuitems', {
 			method: 'POST',
-			body: JSON.stringify({name: name})
+			body: JSON.stringify({
+				name: name,
+				description: description,
+				price: price
+			})
     	})
 
     	
