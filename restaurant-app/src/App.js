@@ -12,6 +12,7 @@ class App extends Component {
 	    this.state = {
 	      menuitems: [],
 	      showOrders: false,
+	      menuitem: {}
 	    }
 	}
 
@@ -77,12 +78,25 @@ class App extends Component {
     
   	}
 
-  	showOrders = (e) => {
+  	showOrders = async (e) => {
+
 		const id = e.currentTarget.id
 
+		console.log(id, 'show orders id')
+
+  		const menuitem = await fetch('http://localhost:9292/menuitems/' + id, {
+  			method: 'GET'
+  		})
+
+  		const menuitemParsed = await menuitem.json();
+  		
+  		console.log(menuitemParsed, 'menuitem fetch request')
+
 		this.setState({
-			showOrders: true
+			showOrders: true,
+			menuitem: menuitemParsed
 		})
+
 	}
 
 	closeOrders = (e) => {
@@ -96,14 +110,16 @@ class App extends Component {
 	}
 	render() {
 
-		console.log(this.state, "state showOrders")
+		console.log(this.state, 'state app.js')
+
 		return (
+
 		  <div className="App">
 		    Welcome to the React Restaurant App!
 
 		    <Menuitems menuitems={this.state.menuitems} deleteItem={this.deleteItem} showOrders={this.showOrders}/>
 		    <CreateMenuitem addItem={this.addItem}/>
-		    <Modal showOrders={this.state.showOrders} closeOrders={this.closeOrders}/>
+		    <Modal menuitems={this.state.menuitems} showOrders={this.state.showOrders} menuitem={this.state.menuitem} closeOrders={this.closeOrders}/>
 
 		  </div>
 		);
