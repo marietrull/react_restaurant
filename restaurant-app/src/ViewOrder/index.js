@@ -9,11 +9,7 @@ class Modal extends Component {
 
 	render (closeOrders) {
 
-	console.log(this.props, 'props Modal')
 	const menuitemName = this.props.menuitem.name
-	console.log(menuitemName, "menuitem for modal")
-
-
 
 	const cssClass = this.props.showOrders ? 'Modal-Open' : 'Modal-Closed'
 

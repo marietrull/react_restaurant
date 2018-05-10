@@ -82,15 +82,20 @@ class App extends Component {
 
 		const id = e.currentTarget.id
 
-		console.log(id, 'show orders id')
-
   		const menuitem = await fetch('http://localhost:9292/menuitems/' + id, {
   			method: 'GET'
   		})
 
   		const menuitemParsed = await menuitem.json();
-  		
-  		console.log(menuitemParsed, 'menuitem fetch request')
+
+
+  		const itemOrders = await fetch('http://localhost:9292/menuitems/' + id + '/orders', {
+  			method: 'GET'
+  		})
+
+  		const itemOrdersParsed = await itemOrders.json();
+
+  		console.log(itemOrdersParsed, 'item orders parsed')
 
 		this.setState({
 			showOrders: true,
