@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Menuitems from './Menuitems';
 import CreateMenuitem from './CreateMenuitem';
+import Modal from './ViewOrder'
 
 class App extends Component {
 	constructor (){
@@ -79,21 +80,23 @@ class App extends Component {
   	showOrders = (e) => {
 		console.log('Edit Clicked')
 
-		// set id equal to current target id
 		const id = e.currentTarget.id
 		console.log(id)
 
-		// this.setState({
-		// 	showOrders: true
-		// })
+		this.setState({
+			showOrders: true
+		})
 	}
 	render() {
+
+		console.log(this.state, "state showOrders")
 		return (
 		  <div className="App">
 		    Welcome to the React Restaurant App!
 
 		    <Menuitems menuitems={this.state.menuitems} deleteItem={this.deleteItem} showOrders={this.showOrders}/>
 		    <CreateMenuitem addItem={this.addItem}/>
+		    <Modal showOrders={this.state.showOrders}/>
 
 		  </div>
 		);

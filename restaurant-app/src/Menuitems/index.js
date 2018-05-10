@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 const Menuitems = ({menuitems, deleteItem, showOrders}) => {
 
-	// menuitems = menuitems
-
 	const menuitemsList = menuitems.map((menuitem, i) => {
 		return (
 			<li key={menuitem.id}>{'ITEM: ' + menuitem.name + ' DESCRIPTION: ' + menuitem.description + ' PRICE: ' + menuitem.price}
